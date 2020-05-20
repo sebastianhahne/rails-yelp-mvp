@@ -8,14 +8,11 @@
   <%= @restaurant.address %>
 </p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @restaurant.reviews[0].rating %>
-</p>
-
+<hr>
 
 <% @restaurant.reviews.each do |review| %>
-  <p><%= review.content %></p>
+  <p><strong>Rating: </strong><%= review.rating %></p>
+  <p><strong>Comment: </strong><%= review.content %></p>
   <%= link_to "Delete Review", restaurant_review_path(review), method: :delete, data: { confirm: "Are you sure you want to delete"} %>
   <hr>
 <% end %>

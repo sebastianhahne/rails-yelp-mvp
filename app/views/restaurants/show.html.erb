@@ -1,0 +1,25 @@
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @restaurant.reviews[0].rating %>
+</p>
+
+
+<% @restaurant.reviews.each do |review| %>
+  <p><%= review.content %></p>
+  <%= link_to "Delete Review", restaurant_review_path(review), method: :delete, data: { confirm: "Are you sure you want to delete"} %>
+  <hr>
+<% end %>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
+<%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %>
